@@ -3,6 +3,7 @@ package config
 import (
 	"log"
 	"os"
+	"strconv"
 )
 
 type Config struct {
@@ -10,6 +11,7 @@ type Config struct {
 	CommentApiURL string
 	ApiKey        string
 	PgDsn         string
+	GoRoutineCnt  int
 }
 
 func NewConfig() *Config {
@@ -17,12 +19,17 @@ func NewConfig() *Config {
 	apikey := mustGetEnv("YOUTUBE_API_KEY")
 	//log.Fatalf(apikey)
 	pgdsn := mustGetEnv("PGDSN")
+	goRoutineCnt, err := strconv.Atoi(mustGetEnv("GOROUTINE_CNT"))
+	if err != nil {
+		panic(err)
+	}
 
 	return &Config{
 		VideoApiURL:   "https://www.googleapis.com/youtube/v3/videos",
 		CommentApiURL: "https://youtube.googleapis.com/youtube/v3/commentThreads",
 		ApiKey:        apikey,
 		PgDsn:         pgdsn,
+		GoRoutineCnt:  goRoutineCnt,
 	}
 }
 

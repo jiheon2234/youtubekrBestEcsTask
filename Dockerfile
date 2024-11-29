@@ -14,7 +14,10 @@ RUN go build -o crawler .
 FROM alpine:latest
 WORKDIR /app
 
+ENV GOROUTINE_CNT=2
+
 # 빌드된 바이너리 복사
 COPY --from=build /app/crawler /app/crawler
 
+#ENTRYPOINT  ["/app/crawler"]
 CMD ["/app/crawler"]

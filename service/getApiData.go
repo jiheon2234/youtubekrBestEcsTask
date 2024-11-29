@@ -27,7 +27,7 @@ func NewYoutubeService(cfg *config.Config) *YoutubeService {
 		VideoApiURL:   cfg.VideoApiURL,
 		CommentApiURL: cfg.CommentApiURL,
 		client:        resty.New(),
-		CommentGoCnt:  2,
+		CommentGoCnt:  cfg.GoRoutineCnt,
 		repository:    repository.NewPostgresRepository(cfg.PgDsn),
 	}
 	return y
