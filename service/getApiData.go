@@ -56,7 +56,12 @@ func (y *YoutubeService) Run() {
 	}
 
 	err = tx.Commit()
-	fmt.Printf("err = %v", err)
+	if err != nil{
+		fmt.Printf("err = %v", err)
+	}else{
+		fmt.Pritln("finish successfully")
+	}
+	
 
 	err = y.repository.UpdateBatchLogToSuccess(logId)
 	y.repository.Close()
