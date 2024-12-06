@@ -59,7 +59,7 @@ func (y *YoutubeService) Run() {
 	if err != nil{
 		fmt.Printf("err = %v", err)
 	}else{
-		fmt.Pritln("finish successfully")
+		fmt.Println("finish successfully")
 	}
 	
 
