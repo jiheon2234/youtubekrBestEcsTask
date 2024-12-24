@@ -117,6 +117,9 @@ func (r *PostgresRepository) InsertComments(tx *sql.Tx, comments []*types.Commen
         VALUES 
     `
 
+	savedAt := time.Now()
+	log.Println(savedAt)
+
 	// 쿼리와 파라미터 동적 생성
 	values := []interface{}{}
 	for i, comment := range comments {
@@ -134,7 +137,7 @@ func (r *PostgresRepository) InsertComments(tx *sql.Tx, comments []*types.Commen
 			comment.PublishedAt,
 			comment.UpdatedAt,
 			comment.TotalReplyCount,
-			time.Now(),          // saved_at
+			savedAt,             // saved_at
 			comment.TextDisplay, // 새 필드 추가
 		)
 	}

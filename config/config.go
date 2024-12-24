@@ -19,9 +19,9 @@ func NewConfig() *Config {
 	apikey := mustGetEnv("YOUTUBE_API_KEY")
 	//log.Fatalf(apikey)
 	pgdsn := mustGetEnv("PGDSN")
-	goRoutineCnt, err := strconv.Atoi(mustGetEnv("GOROUTINE_CNT"))
+	goRoutineCnt, err := strconv.Atoi(os.Getenv("GOROUTINE_CNT"))
 	if err != nil {
-		panic(err)
+		goRoutineCnt = 2
 	}
 
 	return &Config{

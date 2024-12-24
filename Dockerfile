@@ -16,6 +16,9 @@ WORKDIR /app
 
 ENV GOROUTINE_CNT=2
 
+RUN apk add --no-cache tzdata
+ENV TZ=Asia/Seoul
+
 # 빌드된 바이너리 복사
 COPY --from=build /app/crawler /app/crawler
 
