@@ -4,6 +4,7 @@ import (
 	"collectYoutubeData/config"
 	"collectYoutubeData/service"
 	"log"
+	"time"
 )
 
 //TIP To run your code, right-click the code and select <b>Run</b>. Alternatively, click
@@ -12,7 +13,7 @@ import (
 func main() {
 
 	log.Println("HELLO WORLD!!")
-
+	log.Println("now=", time.Now())
 	//now := time.Now()
 	//
 	//// yyyy-mm-dd 형식으로 출력
