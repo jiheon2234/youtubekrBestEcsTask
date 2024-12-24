@@ -117,7 +117,7 @@ func (r *PostgresRepository) InsertComments(tx *sql.Tx, comments []*types.Commen
         VALUES 
     `
 
-	savedAt := time.Now()
+	savedAt := time.Now().Format("2006-01-02")
 	log.Println(savedAt)
 
 	// 쿼리와 파라미터 동적 생성
