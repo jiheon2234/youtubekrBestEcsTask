@@ -86,6 +86,8 @@ func (r *PostgresRepository) InsertVideo(tx *sql.Tx, video *types.VideoDto) (int
         RETURNING id
     `
 
+	savedAt := time.Now().Format("2006-01-02")
+
 	var lastInsertID int64
 	err := tx.QueryRow(query,
 		video.YID,
@@ -99,7 +101,7 @@ func (r *PostgresRepository) InsertVideo(tx *sql.Tx, video *types.VideoDto) (int
 		video.FavoriteCount,
 		video.CommentCount,
 		pq.Array(video.Tags),
-		time.Now(),
+		savedAt,
 	).Scan(&lastInsertID)
 
 	if err != nil {
